@@ -1,0 +1,121 @@
+ 
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+/* navbar */
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+.fa-compass{
+    font-size: 2rem;
+    color: #fe424d;
+}
+
+
+/* footer  */
+
+.f-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 1rem;
+    background-color: #ebebeb;
+    color:#222222;
+    margin-top: 1rem;
+}
+
+.f-info-socials,
+.f-info-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Index Page */
+
+.listing-card{
+    margin-bottom: 2rem;
+    border: none !important;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding:0 !important;
+}
+
+.card-text p{
+    font-weight: 400;
+}
+
+.listing-links{
+    text-decoration: none;
+}
+
+/* card overlay  */
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+
+/* Create Page  */
+
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Edit-page  */
+
+.edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* show page  */
+
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}

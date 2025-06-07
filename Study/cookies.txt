@@ -1,0 +1,44 @@
+// cookies :
+
+what ?
+
+Web cookies are small text files that websites store on a user's computer or device to track browsing activity,
+personalize the user experience, and remember information. They are an integral part of the internet, allowing websites
+to remember user preferences, maintain login sessions, and track website usage. 
+
+how ?
+
+When a user visits a website, the server can send a cookie to the user's browser. 
+The browser stores the cookie and sends it back to the server with subsequent requests. 
+
+res.cookie(name_of_cookie, value_of_cookie);
+
+About ?
+
+cookies are stored inside the "req"
+but if we access the "req.cookies" it will give undefined
+
+Soln ? 
+
+we use a middleware called "cooki-parser"
+cooki_parser = require("cookie-parser");
+app.use(cookie_parser());
+
+then we can access the cookie
+
+
+// Signed Cookies 
+
+we use signed cookies so that we know that if there is tampering( chedchad ) with cookie or not
+
+app.use(cookie_parser("secretcode"));   --- we use some secretcode 
+
+// send side
+res.cookie("cooki-info","cookie-value",{signed:true});
+
+
+// on recieve to verify 
+
+console.log(req.signedCookies)   -- if this is null ( {} )  or false means there is tempering with cookie
+
+[ we use req.cookies -- for unsigned and req.signedCookies for signed ]

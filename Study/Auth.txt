@@ -1,0 +1,46 @@
+# Authentication and authorization
+
+# Hashing Password :
+
+1. Hashing:
+A cryptographic hash function takes the password as input and outputs a fixed-length string of characters (the hash). 
+
+2. One-way function:
+This hash is designed to be computationally infeasible to reverse-engineer back to the original password, making it secure. 
+
+3. Storage:
+The hashed password is stored in the database, not the original password. 
+
+4. Verification:
+When a user logs in, their entered password is hashed and compared to the stored hash. If they match, the user is authenticated. 
+
+
+# Salting :
+
+Password Input: 
+When a user registers, their password is entered. 
+
+Salt Generation: 
+A random, unique salt is generated for each user and password. You can also define the Salt. ex: "#$%"
+
+Salting: 
+The salt is appended to the password (or prepended, depending on the implementation). 
+
+Hashing: 
+The combined password and salt are then hashed using a strong hash function. 
+
+Storage: 
+The hashed password (including the salt) is stored in the database. 
+
+Verification: 
+When a user logs in, the entered password is salted and hashed in the same way. 
+The generated hash is then compared to the stored hash to verify the password. 
+
+
+# Passport - npm library : 
+
+It is express-compatible authentication middleware for Node.js - npm i passport
+Here (In project), we have used "passport-local" - npm i passport-local
+ans "passport-local-mongoose" - npm i passport-local-mongoose
+
+hash algo used = "pbkdf2"

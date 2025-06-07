@@ -1,0 +1,14 @@
+
+# So for image upload :
+
+1. We need manipulate our form so that it can take images
+2. We generally do no store images like files in database because mongodb has certain limits . So for this we can use 3rd party storage.
+3. the 3rd storage will give us url for that image and that we will store in our database.
+
+
+for form :
+
+we need to write " enctype = "multipart/form-data"    "
+and also need to use a package multer and initialize it.
+
+and also a middleware upload.single("name")

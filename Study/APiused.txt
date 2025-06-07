@@ -1,0 +1,8 @@
+ // Cloudinary site : for third part storage.
+
+ // leaflet.js  used - for map 
+
+# Geocoding :
+
+Geocoding is a process of converting addresses (like a street address) into geographic coordinates (such as latitude and longitude),
+which can then be used to place markers or position the address on a map.
