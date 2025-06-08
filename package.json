@@ -2,7 +2,7 @@
   "engines":{
     "node":"22.13.1"
   },
-  "name": "project-(-node-)",
+  "name": "Wanderlust",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

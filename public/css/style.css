@@ -119,3 +119,12 @@ body{
     gap: 1.5rem;
     margin-top: 1rem;
 }
+
+
+/* filters */
+
+.filter.active {
+  opacity: 1;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+}

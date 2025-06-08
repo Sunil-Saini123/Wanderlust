@@ -38,53 +38,51 @@
 </style>
 
 <body>
-
   <div class="filters" id="filtersSection">
-    <div class="filter">
+    <div class="filter" data-category="Trending">
       <div><i class="fa-solid fa-fire"></i></div>
       <p>Trending</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Rooms">
       <div><i class="fa-solid fa-bed"></i></div>
       <p>Rooms</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Mountains">
       <div><i class="fa-solid fa-mountain"></i></div>
       <p>Mountains</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Amazing Pools">
       <div><i class="fa-solid fa-person-swimming"></i></div>
       <p>Amazing Pools</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Iconic Cities">
       <div><i class="fa-solid fa-mountain-city"></i></div>
-      <p>Icoic Cities</p>
+      <p>Iconic Cities</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Castles">
       <div><i class="fa-brands fa-fort-awesome"></i></div>
       <p>Castles</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Camping">
       <div><i class="fa-solid fa-campground"></i></div>
       <p>Camping</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Farms">
       <div><i class="fa-solid fa-cow"></i></div>
       <p>Farms</p>
     </div>
-    <div class="filter">
+    <div class="filter" data-category="Arctic">
       <div><i class="fa-solid fa-snowflake"></i></div>
       <p>Arctic</p>
     </div>
-     <div class="filter">
+    <div class="filter" data-category="Domes">
       <div><i class="fa-solid fa-igloo"></i></div>
       <p>Domes</p>
     </div>
-       <div class="filter">
+    <div class="filter" data-category="Boats">
       <div><i class="fa-solid fa-sailboat"></i></div>
       <p>Boats</p>
     </div>
-
 
     <div class="tax-togller">
       <div class="form-check-reverse form-switch">
@@ -103,8 +101,8 @@
 
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
     <%for(let list of lists){ %>
-    <a href="/listings/<%= list._id %>" class="listing-links">
-      <div class="card col listing-card">
+    <a href="/listings/<%= list._id %>" class="listing-links" data-category="<%= list.category %>">
+      <div class="card col listing-card" >
         <img
           src="<%= list.image.url %>"
           class="card-img-top"
@@ -129,14 +127,44 @@
 
 <script>
   let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
   taxSwitch.addEventListener("click", () => {
     let taxInfo = document.getElementsByClassName("tax-info");
-    for (info of taxInfo) {
-      if (info.style.display != "inline") {
-        info.style.display = "inline";
-      } else {
-        info.style.display = "none";
-      }
+    for (let info of taxInfo) {
+      info.style.display = info.style.display !== "inline" ? "inline" : "none";
     }
   });
+
+  const filters = document.querySelectorAll(".filter");
+  const listings = document.querySelectorAll(".listing-links");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const selectedCategory = filter.getAttribute("data-category");
+
+      listings.forEach((card) => {
+        if (card.getAttribute("data-category") === selectedCategory) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      filters.forEach((f) => f.classList.remove("active"));
+      filter.classList.add("active");
+    });
+  });
+
+  const exploreLinks=document.getElementsByClassName("exploreLink")
+  for (let link of exploreLinks) {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      listings.forEach((card) => {
+        card.style.display = "block";
+      });
+
+      filters.forEach((f) => f.classList.remove("active"));
+    });
+  }
 </script>
