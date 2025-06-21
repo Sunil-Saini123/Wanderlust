@@ -23,6 +23,19 @@ router
 //create route
 router.get("/new", isLoggedin, ListingController.rendercreate);
 
+router.post("/search",isLoggedin,wrapAsync(async (req,res)=>{
+  let {search}=req.body;
+ 
+    let query={};
+    if (search) {
+      query.country = { $regex: new RegExp(search, "i") }; // "i" for case-insensitive
+      const listings = await Listing.find(query);
+      res.render("listing/index.ejs",{lists : listings})
+    }else{
+      res.redirect("/listings")
+    }
+}))
+
 router
   .route("/:id")
   .get(wrapAsync(ListingController.show))
